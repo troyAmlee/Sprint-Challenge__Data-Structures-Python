@@ -38,5 +38,53 @@ class LinkedList:
 
         return False
 
+    def remove_head(self):
+        if self.head is None:
+            return None
+        if self.head.get_next() is None:
+            head = self.head
+
+            self.head = None
+
+            return head.get_value()
+
+        value = self.head.get_value()
+        self.head = self.head.get_next()
+        return value
+
     def reverse_list(self, node, prev):
-        pass
+        nodes = list()
+        nose = list()
+        if(not self.head):
+            return "Nothing to reverse"
+        elif(self.head.next_node == None):
+            return self.head
+        else:
+            current = self.head
+            while(current):
+                if(current != None):
+                    nodes.append(current.value)
+                current = current.get_next()
+            print(f"Nodes List: {nodes}")
+            
+            
+            for i in nodes:
+                self.remove_head()
+            for i in nodes:
+                self.add_to_head(i)
+            current = self.head
+            while(current):
+                if(current != None):
+                    nose.append(current.value)
+                current = current.get_next()
+            print(f"Reversed Nodes: {nose}")
+            return
+
+# pork = LinkedList()
+
+# pork.add_to_head(1)
+# pork.add_to_head(2)
+# pork.add_to_head(3)
+# pork.add_to_head(4)
+# pork.add_to_head(5)
+# pork.reverse_list(pork.head, None)
